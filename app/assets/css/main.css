@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+/*
+ * Design system — Homens de Barba
+ * Paleta extraída da logo: fundo grafite, dourado (perfil/texto) e cobre (anéis).
+ * Camada 1: escalas base (gold, copper, charcoal)
+ * Camada 2: tokens semânticos (use estes nos componentes)
+ */
+@theme {
+  /* ---- Escalas base ---- */
+  --color-gold-50: #fdf8ec;
+  --color-gold-100: #faefcf;
+  --color-gold-200: #f4dd9c;
+  --color-gold-300: #ecc566;
+  --color-gold-400: #e0aa3e;
+  --color-gold-500: #c9922a;
+  --color-gold-600: #a87420;
+  --color-gold-700: #86581c;
+  --color-gold-800: #6e471d;
+  --color-gold-900: #5d3c1c;
+
+  --color-copper-50: #fdf3ed;
+  --color-copper-100: #fbe3d3;
+  --color-copper-200: #f6c5a6;
+  --color-copper-300: #f0a171;
+  --color-copper-400: #e87b43;
+  --color-copper-500: #d9601f;
+  --color-copper-600: #c04b16;
+  --color-copper-700: #9f3a15;
+  --color-copper-800: #823118;
+  --color-copper-900: #6a2b16;
+
+  --color-charcoal-50: #f6f5f4;
+  --color-charcoal-100: #e7e5e3;
+  --color-charcoal-200: #cfcbc8;
+  --color-charcoal-300: #aea8a4;
+  --color-charcoal-400: #8a837e;
+  --color-charcoal-500: #6e6761;
+  --color-charcoal-600: #58524d;
+  --color-charcoal-700: #46413d;
+  --color-charcoal-800: #2c2927;
+  --color-charcoal-900: #1e1c1a;
+  --color-charcoal-950: #141211;
+
+  /* ---- Tokens semânticos ---- */
+  /* Superfícies */
+  --color-background: var(--color-charcoal-950);
+  --color-surface: var(--color-charcoal-900);
+  --color-surface-raised: var(--color-charcoal-800);
+  --color-border: var(--color-charcoal-700);
+
+  /* Texto */
+  --color-foreground: var(--color-charcoal-50);
+  --color-muted: var(--color-charcoal-300);
+  --color-subtle: var(--color-charcoal-400);
+
+  /* Marca */
+  --color-primary: var(--color-gold-400);
+  --color-primary-hover: var(--color-gold-300);
+  --color-primary-active: var(--color-gold-500);
+  --color-primary-foreground: var(--color-charcoal-950);
+
+  --color-secondary: var(--color-copper-500);
+  --color-secondary-hover: var(--color-copper-400);
+  --color-secondary-active: var(--color-copper-600);
+  --color-secondary-foreground: var(--color-charcoal-50);
+
+  --color-accent: var(--color-gold-200);
+  --color-ring: var(--color-gold-400);
+
+  /* Feedback */
+  --color-success: #4ade80;
+  --color-warning: var(--color-gold-300);
+  --color-danger: #f87171;
+  --color-info: #60a5fa;
+
+  /* ---- Tipografia / forma ---- */
+  --font-display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 0.75rem;
+  --shadow-glow: 0 0 40px -10px rgb(224 170 62 / 0.45);
+}
+
+@layer base {
+  html {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+}
