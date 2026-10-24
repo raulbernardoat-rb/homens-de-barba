@@ -5,7 +5,7 @@ import SiteFooter from "~/components/SiteFooter.vue";
 useHead({
   title: "Homens de Barba",
   htmlAttrs: { lang: "pt-BR" },
-  link: [{ rel: "icon", type: "image/png", href: "/images/logo.png" }],
+  link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
 });
 </script>
 
