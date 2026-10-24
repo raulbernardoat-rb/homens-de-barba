@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import HaircutCard from "~/components/HaircutCard.vue";
+import RevealOnScroll from "~/components/RevealOnScroll.vue";
 
 const haircuts = [
   { image: "/images/cortes/corte-1.png", name: "Corte 1", price: "R$ 20" },
@@ -21,28 +22,34 @@ function scrollByPage(direction: 1 | -1) {
 </script>
 
 <template>
-  <section id="servicos" class="bg-background">
-    <div class="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8 lg:py-24">
-      <div class="mx-auto max-w-2xl text-center">
+  <section id="servicos" class="relative isolate overflow-hidden bg-background">
+    <!-- Degradê e brilhos de fundo -->
+    <div class="absolute inset-0 -z-10 bg-linear-to-b from-charcoal-950 via-charcoal-900 to-charcoal-950" aria-hidden="true" />
+    <div class="absolute left-1/2 top-0 -z-10 h-72 w-[40rem] -translate-x-1/2 rounded-full bg-secondary/20 blur-3xl" aria-hidden="true" />
+    <div class="absolute -bottom-32 -right-24 -z-10 size-96 rounded-full bg-primary/15 blur-3xl" aria-hidden="true" />
+
+    <div class="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 lg:py-28">
+      <RevealOnScroll class="mx-auto max-w-2xl text-center">
         <span class="text-sm font-semibold uppercase tracking-widest text-secondary">
           Serviços
         </span>
         <h2 class="mt-4 font-display text-3xl font-bold text-foreground sm:text-4xl">
           Escolha o seu
-          <span class="bg-linear-to-r from-gold-300 to-gold-500 bg-clip-text text-transparent">
+          <span class="bg-linear-to-r from-gold-200 via-gold-400 to-copper-400 bg-clip-text text-transparent">
             estilo
           </span>
         </h2>
-        <p class="mt-4 text-base text-muted sm:text-lg">
+        <div class="mx-auto mt-5 h-1 w-20 rounded-full bg-linear-to-r from-gold-400 to-copper-500" />
+        <p class="mt-5 text-base text-muted sm:text-lg">
           Confira nossos cortes e valores.
         </p>
-      </div>
+      </RevealOnScroll>
 
-      <div class="relative mt-10 lg:mt-14">
+      <RevealOnScroll :delay="120" class="relative mt-10 lg:mt-14">
         <!-- Trilha rolável: arrastar no celular, setas no computador -->
         <div
           ref="track"
-          class="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-6 [&::-webkit-scrollbar]:hidden"
+          class="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth py-3 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-6 [&::-webkit-scrollbar]:hidden"
         >
           <div
             v-for="haircut in haircuts"
@@ -70,7 +77,7 @@ function scrollByPage(direction: 1 | -1) {
         >
           <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
         </button>
-      </div>
+      </RevealOnScroll>
     </div>
   </section>
 </template>

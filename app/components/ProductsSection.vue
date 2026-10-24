@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import ProductCard from "~/components/ProductCard.vue";
+import RevealOnScroll from "~/components/RevealOnScroll.vue";
 
 interface Product {
   name: string;
@@ -62,22 +63,25 @@ const selectedLine = computed(() => lines.find((line) => line.id === selectedId.
 </script>
 
 <template>
-  <section id="produtos" class="bg-surface">
-    <div class="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8 lg:py-24">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-sm font-semibold uppercase tracking-widest text-secondary">
+  <section id="produtos" class="relative isolate overflow-hidden bg-linear-to-b from-white via-charcoal-50 to-white">
+    <div class="absolute -left-24 top-20 -z-10 size-96 rounded-full bg-gold-200/50 blur-3xl" aria-hidden="true" />
+    <div class="absolute -right-24 bottom-10 -z-10 size-96 rounded-full bg-copper-100/70 blur-3xl" aria-hidden="true" />
+    <div class="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 lg:py-28">
+      <RevealOnScroll class="mx-auto max-w-2xl text-center">
+        <span class="text-sm font-semibold uppercase tracking-widest text-copper-600">
           Produtos
         </span>
-        <h2 class="mt-4 font-display text-3xl font-bold text-foreground sm:text-4xl">
+        <h2 class="mt-4 font-display text-3xl font-bold text-charcoal-900 sm:text-4xl">
           Cuide do seu
-          <span class="bg-linear-to-r from-gold-300 to-gold-500 bg-clip-text text-transparent">
+          <span class="bg-linear-to-r from-gold-600 via-gold-500 to-copper-500 bg-clip-text text-transparent">
             visual em casa
           </span>
         </h2>
-        <p class="mt-4 text-base text-muted sm:text-lg">
+        <p class="mt-4 text-base text-charcoal-600 sm:text-lg">
           Escolha uma linha para ver os produtos.
         </p>
-      </div>
+        <div class="mx-auto mt-5 h-1 w-20 rounded-full bg-linear-to-r from-gold-400 to-copper-500" />
+      </RevealOnScroll>
 
       <div class="mt-10 grid gap-6 lg:mt-14 lg:grid-cols-[18rem_1fr] lg:gap-10">
         <!-- Linhas: lista na lateral (computador) / faixa deslizável (celular) -->
@@ -95,8 +99,8 @@ const selectedLine = computed(() => lines.find((line) => line.id === selectedId.
             :class="[
               'shrink-0 rounded-lg border px-5 py-3 text-left text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-ring sm:text-base',
               line.id === selectedId
-                ? 'border-primary bg-primary text-primary-foreground shadow-glow'
-                : 'border-border bg-surface-raised text-foreground hover:border-primary hover:text-primary',
+                ? 'border-transparent bg-linear-to-r from-gold-300 via-gold-400 to-copper-500 text-charcoal-950 shadow-lg shadow-copper-500/30'
+                : 'border-charcoal-200 bg-charcoal-50 text-charcoal-800 hover:border-primary hover:text-gold-700',
             ]"
             @click="selectedId = line.id"
           >
@@ -106,7 +110,7 @@ const selectedLine = computed(() => lines.find((line) => line.id === selectedId.
 
         <!-- Produtos da linha selecionada -->
         <div role="tabpanel">
-          <h3 class="font-display text-xl font-semibold text-accent sm:text-2xl">
+          <h3 class="font-display text-xl font-semibold text-charcoal-900 sm:text-2xl">
             {{ selectedLine.name }}
           </h3>
           <div class="mt-5 grid grid-cols-2 gap-4 sm:gap-6 xl:grid-cols-3">
